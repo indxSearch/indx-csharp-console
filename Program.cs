@@ -10,7 +10,7 @@ namespace IndxConsoleApp
             //
             // CREATE INSTANCE
             //
-            var SearchEngine = new IndxSearchEngine(null, null, 103, false, null, null);
+            var SearchEngine = new IndxSearchEngine(null, null, 100, false, null, null);
 
 
             //
@@ -111,7 +111,7 @@ namespace IndxConsoleApp
                 var text = Console.ReadLine() ?? ""; // pattern to be searched for
 
                 var algorithm = Algorithm.Coverage; // Coverage or RelevancyRanking
-                var numRecords = 50; // Records to be returned
+                var numRecords = 30; // Records to be returned
                 var timeOutLimit = 1000; // Timeout if cpu overload in milliseconds
                 var rmDuplicates = false; // remove duplicates with same key
                 var logPrefix = ""; // logger prefix per search
