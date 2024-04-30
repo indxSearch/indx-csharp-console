@@ -111,11 +111,10 @@ namespace IndxConsoleApp
                 var text = Console.ReadLine() ?? ""; // pattern to be searched for
 
                 var algorithm = Algorithm.Coverage; // Coverage or RelevancyRanking
-                var numRecords = 30; // Records to be returned
+                var numRecords = 50; // Records to be returned
                 var timeOutLimit = 1000; // Timeout if cpu overload in milliseconds
                 var rmDuplicates = false; // remove duplicates with same key
                 var logPrefix = ""; // logger prefix per search
-
 
                 // Set up coverage (this is not required for RelevancyRanking)
                 var coverageSetup = new CoverageSetup();
@@ -129,26 +128,29 @@ namespace IndxConsoleApp
                 //
 
                 var result = SearchEngine.Search(query);
-
-                int minimumScore = 50; // 0-255
+                var truncateByCoverage = false; // Needs Algorithm.Coverage to work
+                int minimumScore = 40; // 0-255
                 int index = 0;
                 Console.WriteLine(""); // space
                 foreach (var record in result.SearchRecords)
                 {
-                    if(index < result.CoverageBottomIndex +1 || result.CoverageBottomIndex == -1 && record.MetricScore > minimumScore)
+                    if (record.MetricScore < minimumScore) break;
+                    if (truncateByCoverage && result.CoverageBottomIndex != -1 && index > result.CoverageBottomIndex)
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                        Console.Write($"{index}\t");
+                        break;
+                    }
 
-                        Console.ResetColor();
-                        Console.Write(record.DocumentTextToBeIndexed);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write($"{index}\t");
 
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine($" ({record.MetricScore})");
-
-                        Console.ResetColor();
-                    } else break;
                     Console.ResetColor();
+                    Console.Write(record.DocumentTextToBeIndexed);
+
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine($" ({record.MetricScore})");
+
+                    Console.ResetColor();
+                    
                     index++;
                 }
 
