@@ -10,7 +10,7 @@ namespace IndxConsoleApp
             //
             // CREATE INSTANCE
             //
-            var SearchEngine = new IndxSearchEngine(null, null, 103, false, null, null);
+            var SearchEngine = new IndxSearchEngine(null, null, 100, false, null, null);
 
 
             //
@@ -128,7 +128,7 @@ namespace IndxConsoleApp
                 //
 
                 var result = SearchEngine.Search(query);
-                var truncateByCoverage = false; // Needs Algorithm.Coverage to work
+                var truncateByCoverage = true; // Needs Algorithm.Coverage to work
                 int minimumScore = 40; // 0-255
                 int index = 0;
                 Console.WriteLine(""); // space
