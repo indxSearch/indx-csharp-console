@@ -10,14 +10,14 @@ namespace IndxConsoleApp
             //
             // CREATE INSTANCE
             //
-            var SearchEngine = new IndxSearchEngine(null, null, 100, false, null, null);
+            var SearchEngine = new IndxSearchEngine(null, null, 103, false, null, null);
 
 
             //
             // READ DATA FROM FILE
             //
 
-            string fileName = "data/imdb_top10k.txt";
+            string fileName = "data/lwin_200k_wines.txt";
             Console.Write($"\rProcessing {fileName}");
             string path = Path.Combine(Environment.CurrentDirectory, fileName);
             var lines = File.ReadAllLines(path);
