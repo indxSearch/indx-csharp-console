@@ -37,7 +37,7 @@ namespace IndxConsoleApp
             {
                 int segment = 0; // use this if you want to search for multiple segments of the same key
                 string clientText = ""; // use this to add non-indexed information
-                var doc = new Document(key, segment, item, clientText, 0, 0);
+                var doc = new Document(key, segment, item, clientText);
                 documents.Add(doc);
                 key++;
             }
