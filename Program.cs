@@ -110,17 +110,17 @@ namespace IndxConsoleApp
                 Console.Write("🔍 Search: ");
                 var text = Console.ReadLine() ?? ""; // pattern to be searched for
 
-                var algorithm = Algorithm.Coverage; // Coverage or RelevancyRanking
+                var applyCoverage = true; // Disable this to run pure pattern recognition search
                 var numRecords = 30; // Records to be returned
                 var timeOutLimit = 1000; // Timeout if cpu overload in milliseconds
                 var rmDuplicates = false; // remove duplicates with same key
                 var logPrefix = ""; // logger prefix per search
 
-                // Set up coverage (this is not required for RelevancyRanking)
+                // Set up coverage (this only activates with applyCoverage true)
                 var coverageSetup = new CoverageSetup();
-                coverageSetup.LcsWordMinWordSize = 2;
+                coverageSetup.MinWordSize = 2;
 
-                var query = new SearchQuery(text, algorithm, numRecords, timeOutLimit, null, null, null, null, rmDuplicates, logPrefix, 500, coverageSetup);
+                var query = new SearchQuery(text, applyCoverage, numRecords, timeOutLimit, null, null, null, null, rmDuplicates, logPrefix, null, coverageSetup);
                 
 
                 //
