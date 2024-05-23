@@ -20,7 +20,7 @@ namespace IndxConsoleApp
             // READ DATA FROM FILE
             //
 
-            string fileName = "data/lwin_200k_wines.txt";
+            string fileName = "data/tmdb_top10k_movies.txt";
             Console.Write($"\rProcessing {fileName}");
             string path = Path.Combine(Environment.CurrentDirectory, fileName);
             var lines = File.ReadAllLines(path);
