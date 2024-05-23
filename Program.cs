@@ -7,6 +7,9 @@ namespace IndxConsoleApp
         private static void Main()
         {
 
+            // INDX CONSOLE APP FOR C# LIB V3.3
+            // https://indx.co
+
             //
             // CREATE INSTANCE
             //
