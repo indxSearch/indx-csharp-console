@@ -8,7 +8,7 @@ namespace IndxConsoleApp
         {
 
             // INDX CONSOLE APP FOR C# LIB V3.3
-            // https://indx.co
+            // Docs: https://docs.indx.co/api/csharp/
 
             //
             // CREATE INSTANCE
@@ -81,8 +81,8 @@ namespace IndxConsoleApp
             static string DrawProgressBar(int progress, int totalWidth)
             {
                 int filledWidth = (int)(progress / 100.0 * totalWidth);
-                string filledPart = new string('=', filledWidth); // █ ▓
-                string unfilledPart = new string('-', totalWidth - filledWidth); // ░ ░
+                string filledPart = new string('=', filledWidth);
+                string unfilledPart = new string('-', totalWidth - filledWidth);
                 return $"{filledPart}{unfilledPart}";
             }
 
