@@ -8,7 +8,7 @@ namespace IndxConsoleApp
         {
 
             // INDX CONSOLE APP FOR C# LIB V3.3
-            // Docs: https://docs.indx.co/api/csharp/
+            // Docs: https://docs.indx.co/csharp/
 
             //
             // CREATE INSTANCE
