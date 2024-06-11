@@ -27,6 +27,7 @@ namespace IndxConsoleApp
             //handle visual studio and vscode relative paths
             if (!File.Exists("data/" + fileName)) fileUrl = "../../../data/" + fileName;
 
+
             Console.Write($"\rProcessing {fileName}");
             string path = Path.Combine(Environment.CurrentDirectory, fileUrl);
             var lines = File.ReadAllLines(path);
