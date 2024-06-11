@@ -1,4 +1,6 @@
-﻿using IndxSearchLib;
+﻿using System;
+using System.IO;
+using IndxSearchLib;
 using IndxSearchLib.API_Files;
 namespace IndxConsoleApp
 {
@@ -20,9 +22,13 @@ namespace IndxConsoleApp
             // READ DATA FROM FILE
             //
 
-            string fileName = "data/tmdb_top10k_movies.txt";
+            string fileName = "tmdb_top10k_movies.txt";
+            string fileUrl = "data/" + fileName;
+            //handle visual studio and vscode relative paths
+            if (!File.Exists("data/" + fileName)) fileName = "../../../data/" + fileName;
+
             Console.Write($"\rProcessing {fileName}");
-            string path = Path.Combine(Environment.CurrentDirectory, fileName);
+            string path = Path.Combine(Environment.CurrentDirectory, fileUrl);
             var lines = File.ReadAllLines(path);
 
 
@@ -90,7 +96,8 @@ namespace IndxConsoleApp
             // Clear screen when indexed
             Console.Clear();
 
-            // Print when indexing is done
+
+            // Print when index is done
             int indexTime = (int)timeSpent;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"🟢 Indexed '{fileName}' ({status.DocumentCount} documents) and ready to search in {indexTime/1000} seconds ({indexTime} ms) \n");
@@ -118,7 +125,11 @@ namespace IndxConsoleApp
                 var rmDuplicates = false; // remove duplicates with same key
                 var logPrefix = ""; // logger prefix per search
 
-                var query = new SearchQuery(text, applyCoverage, numRecords, timeOutLimit, null, null, null, null, rmDuplicates, logPrefix, null, null);
+                // Set up coverage (this only activates with applyCoverage true)
+                var coverageSetup = new CoverageSetup();
+                coverageSetup.MinWordSize = 2;
+
+                var query = new SearchQuery(text, applyCoverage, numRecords, timeOutLimit, null, null, null, null, rmDuplicates, logPrefix, null, coverageSetup);
                 
 
                 //
