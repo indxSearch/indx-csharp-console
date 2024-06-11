@@ -25,7 +25,7 @@ namespace IndxConsoleApp
             string fileName = "tmdb_top10k_movies.txt";
             string fileUrl = "data/" + fileName;
             //handle visual studio and vscode relative paths
-            if (!File.Exists("data/" + fileName)) fileName = "../../../data/" + fileName;
+            if (!File.Exists("data/" + fileName)) fileUrl = "../../../data/" + fileName;
 
             Console.Write($"\rProcessing {fileName}");
             string path = Path.Combine(Environment.CurrentDirectory, fileUrl);
