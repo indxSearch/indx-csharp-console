@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using IndxSearchLib;
+﻿using IndxSearchLib;
 using IndxSearchLib.API_Files;
 namespace IndxConsoleApp
 {
