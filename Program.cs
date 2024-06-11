@@ -90,8 +90,7 @@ namespace IndxConsoleApp
             // Clear screen when indexed
             Console.Clear();
 
-
-            // Print when index is done
+            // Print when indexing is done
             int indexTime = (int)timeSpent;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"🟢 Indexed '{fileName}' ({status.DocumentCount} documents) and ready to search in {indexTime/1000} seconds ({indexTime} ms) \n");
@@ -119,11 +118,7 @@ namespace IndxConsoleApp
                 var rmDuplicates = false; // remove duplicates with same key
                 var logPrefix = ""; // logger prefix per search
 
-                // Set up coverage (this only activates with applyCoverage true)
-                var coverageSetup = new CoverageSetup();
-                coverageSetup.MinWordSize = 2;
-
-                var query = new SearchQuery(text, applyCoverage, numRecords, timeOutLimit, null, null, null, null, rmDuplicates, logPrefix, null, coverageSetup);
+                var query = new SearchQuery(text, applyCoverage, numRecords, timeOutLimit, null, null, null, null, rmDuplicates, logPrefix, null, null);
                 
 
                 //
