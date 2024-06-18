@@ -13,7 +13,7 @@ namespace IndxConsoleApp
             //
             // CREATE INSTANCE
             //
-            var SearchEngine = new IndxSearchEngine(null, null, 100, false, null, null);
+            var SearchEngine = new IndxSearchEngine();
 
 
             //
@@ -44,7 +44,7 @@ namespace IndxConsoleApp
             foreach (var item in lines)
             {
                 int segment = 0; // use this if you want to search for multiple segments of the same key
-                string clientText = ""; // use this to add non-indexed information
+                string clientText = ""; // use this to add non-indexed information you can retrieve later
                 var doc = new Document(key, segment, item, clientText);
                 documents.Add(doc);
                 key++;
@@ -65,11 +65,7 @@ namespace IndxConsoleApp
             DateTime startTime = DateTime.Now;
             double timeSpent = 0;
 
-            while ((int)status.SystemState < 3) // Check and print status while indexing
-            // 0 idle
-            // 1 processing
-            // 2 indexing
-            // 3 ready
+            while (status.SystemState != SystemState.Ready)
             {
                 timeSpent = (DateTime.Now - startTime).TotalMilliseconds;
                 
@@ -129,7 +125,6 @@ namespace IndxConsoleApp
                 coverageSetup.MinWordSize = 2;
 
                 var query = new SearchQuery(text, applyCoverage, numRecords, timeOutLimit, null, null, null, null, rmDuplicates, logPrefix, null, coverageSetup);
-                
 
                 //
                 // Search and list results
