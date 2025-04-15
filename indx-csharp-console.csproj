@@ -8,7 +8,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="IndxSearchLib" Version="3.3.0.8" />
+    <PackageReference Include="IndxSearchLib" Version="3.3.0.9" />
   </ItemGroup>
   <ItemGroup Condition="Exists('indx.license')">
     <None Include="indx.license">
